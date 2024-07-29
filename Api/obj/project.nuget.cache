@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZGlmXkR8dWI=",
+  "dgSpecHash": "h+wUr7Zc/OM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\letic\\Api\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\letic\\ApiTwoFactorAuthentication\\ApiTwo-FactorAuthentication\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\letic\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\letic\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

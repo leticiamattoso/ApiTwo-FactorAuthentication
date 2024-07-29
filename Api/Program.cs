@@ -1,6 +1,10 @@
+using System.Security.Claims;
 using Api.Data;
 using Api.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,8 +33,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    app.MapSwagger().
-        RequireAuthorization();
+    app.MapSwagger();
+    // app.MapSwagger().
+    //     RequireAuthorization();
 }
 
 app.UseHttpsRedirection();
@@ -39,7 +44,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", (ClaimsPrincipal user) => user.Identity!.Name).RequireAuthorization();
+
 app.MapIdentityApi<User>();
+
+//Método Post
+app.MapPost(pattern: "/logout",
+    async (SignInManager<User> signInManager, [FromBody] object empty) =>
+    {
+        await signInManager.SignOutAsync();
+        return Results.Ok();
+    });
 
 app.Run();
